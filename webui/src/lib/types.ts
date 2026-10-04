@@ -192,6 +192,7 @@ interface UISessionMessage {
 }
 
 export interface SessionAutomationJob {
+  chat_binding_revision?: string;
   id: string;
   name: string;
   enabled: boolean;
@@ -240,6 +241,13 @@ export interface SessionAutomationJob {
 
 export interface SessionAutomationsPayload { jobs: SessionAutomationJob[]; }
 export interface AutomationsPayload { jobs: SessionAutomationJob[]; }
+export interface AutomationChat { id: string; title: string; channel: string; unavailable?: boolean; }
+export interface AutomationChatsPayload {
+  revision: string;
+  current: AutomationChat | null;
+  chats: AutomationChat[];
+}
+export interface AutomationChatUpdate { target_id: string; revision: string; message: string; }
 export interface AutomationUpdatePayload {
   name?: string;
   message?: string;
